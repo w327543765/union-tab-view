@@ -111,7 +111,7 @@ public struct UnionTabView<Tab: Hashable, Content: View, TabItemContent: View>: 
             GeometryReader { geometry in
                 InteractiveSegmentedControl(
                     size: geometry.size,
-                    barTint: .gray.opacity(0.15),
+                    barTint: .gray.opacity(0.45),
                     selectedIndex: Binding(
                         get: { selectedIndex },
                         set: { newIndex in
