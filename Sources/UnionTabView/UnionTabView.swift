@@ -5,7 +5,6 @@
 //  Created by Union St on 11/28/25.
 //
 
-import UIKit
 import SwiftUI
 
 /// An adaptive tab view that renders a Liquid Glass floating tab bar on iOS 26+ with fully custom tab item views.
@@ -127,10 +126,6 @@ public struct UnionTabView<Tab: Hashable, Content: View, TabItemContent: View>: 
         }
         .padding(4)
         .glassEffect(.regular.interactive(), in: .capsule)
-        .background {
-            Capsule(style: .continuous)
-                .fill(Color.unionTabBarBackground)
-        }
     }
     
     private var legacyBody: some View {
@@ -259,15 +254,3 @@ public extension View {
     }
 }
 
-private extension Color {
-    static var unionTabBarBackground: Color {
-        Color(uiColor: UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(white: 0.12, alpha: 0.86)
-            default:
-                return UIColor(white: 1.0, alpha: 1)
-            }
-        })
-    }
-}
