@@ -76,19 +76,21 @@ public struct UnionTabView<Tab: Hashable, Content: View, TabItemContent: View>: 
             content
         }
         .safeAreaInset(edge: .bottom) {
-            if !isTabBarHidden {
-                glassTabBar
+            glassTabBar
                 .ignoresSafeArea()
                 .padding(.horizontal, 20)
                 .padding(.bottom, -bottomInsets + 21)
+                .opacity(isTabBarHidden ? 0 : 1)
+                .offset(y: isTabBarHidden ? 24 : 0)
+                .allowsHitTesting(!isTabBarHidden)
+                .accessibilityHidden(isTabBarHidden)
                 .onGeometryChange(for: CGFloat.self) { proxy in
                     proxy.safeAreaInsets.bottom
                 } action: { value in
                     bottomInsets = value
                 }
-            }
-            
         }
+        .animation(.easeInOut(duration: 0.18), value: isTabBarHidden)
     }
     
     private var selectedIndex: Int {
@@ -133,19 +135,21 @@ public struct UnionTabView<Tab: Hashable, Content: View, TabItemContent: View>: 
             content
         }
         .safeAreaInset(edge: .bottom) {
-            if !isTabBarHidden {
-                legacyTabBar
+            legacyTabBar
                 .ignoresSafeArea()
                 .padding(.horizontal, 20)
                 .padding(.bottom, -bottomInsets + 28)
+                .opacity(isTabBarHidden ? 0 : 1)
+                .offset(y: isTabBarHidden ? 24 : 0)
+                .allowsHitTesting(!isTabBarHidden)
+                .accessibilityHidden(isTabBarHidden)
                 .onGeometryChange(for: CGFloat.self) { proxy in
                     proxy.safeAreaInsets.bottom
                 } action: { value in
                     bottomInsets = value
                 }
-            }
-            
         }
+        .animation(.easeInOut(duration: 0.18), value: isTabBarHidden)
     }
 
     private var legacyTabBar: some View {
