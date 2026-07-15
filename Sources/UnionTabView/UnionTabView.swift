@@ -90,7 +90,7 @@ public struct UnionTabView<Tab: Hashable, Content: View, TabItemContent: View>: 
                     bottomInsets = value
                 }
         }
-        .animation(.easeInOut(duration: 0.18), value: isTabBarHidden)
+        // .animation(.easeInOut(duration: 0.18), value: isTabBarHidden)
     }
     
     private var selectedIndex: Int {
@@ -149,7 +149,7 @@ public struct UnionTabView<Tab: Hashable, Content: View, TabItemContent: View>: 
                     bottomInsets = value
                 }
         }
-        .animation(.easeInOut(duration: 0.18), value: isTabBarHidden)
+        // .animation(.easeInOut(duration: 0.18), value: isTabBarHidden)
     }
 
     private var legacyTabBar: some View {
